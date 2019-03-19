@@ -45,7 +45,7 @@ downloading RPM package.
 
 The full url to the **SHA256** checksum file, used when checksum verification of the RPM download is required.
 
-    f5app_services_package_checksum:
+    f5app_services_package_checksum
     
 The RPM **SHA265** checksum string, used when checksum verification of the RPM download is required. 
 Mutually exclusive with ``f5app_services_package_checksum_url``.

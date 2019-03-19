@@ -38,8 +38,3 @@
   when:
     - f5app_services_package_state == absent
     - f5app_services_package_path is defined
-
-
-
-
-

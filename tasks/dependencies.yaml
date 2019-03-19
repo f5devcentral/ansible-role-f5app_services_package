@@ -4,7 +4,7 @@
   local_action: command rpm --version warn=False
   delegate_to: localhost
   register: result
-  ignore_errors: yes
+  ignore_errors: true
 
 - name: RPM is not installed raise error
   fail:

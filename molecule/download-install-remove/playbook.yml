@@ -55,4 +55,3 @@
         name: ansible-role-f5app_services_package
       vars:
         f5app_services_package_path: "/tmp/f5-telemetry-1.1.0-1.noarch.rpm"
-

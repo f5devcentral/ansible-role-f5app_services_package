@@ -16,7 +16,7 @@
   get_url:
     url: "{{ f5app_services_package_url }}"
     dest: "{{ f5app_services_package_destination }}"
-    validate_certs: no
+    validate_certs: false
   when:
     - f5app_services_package_checksum_url is not defined and f5app_services_package_checksum is not defined
 
@@ -25,7 +25,7 @@
     url: "{{ f5app_services_package_url }}"
     dest: "{{ f5app_services_package_destination }}"
     checksum: "sha256:{{ f5app_services_package_checksum_url }}"
-    validate_certs: no
+    validate_certs: false
   when:
     - f5app_services_package_checksum_url is defined
 
@@ -34,17 +34,17 @@
     url: "{{ f5app_services_package_url }}"
     dest: "{{ f5app_services_package_destination }}"
     checksum: "sha256:{{ f5app_services_package_checksum }}"
-    validate_certs: no
+    validate_certs: false
   when:
     - f5app_services_package_checksum is defined
 
 - name: Check the RPM file is downloaded and present
-    stat:
-      path: "{{ f5app_services_package_destination }}"
-    register: rpmstatus
-    until: rpmstatus.stat.exists
-    retries: 10
-    delay: 15
+  stat:
+    path: "{{ f5app_services_package_destination }}"
+  register: rpmstatus
+  until: rpmstatus.stat.exists
+  retries: 10
+  delay: 15
 
 - name: Set the package file path fact if file is downloaded
   set_fact:
