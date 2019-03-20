@@ -51,5 +51,5 @@
     f5app_services_package_path: "{{ f5app_services_package_destination }}"
 
 
-- import_tasks: install-remove.yaml
+- import_tasks: install.yaml
   when: f5app_services_package_path is defined

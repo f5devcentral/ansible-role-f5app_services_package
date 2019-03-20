@@ -28,7 +28,7 @@
     - f5app_services_package_url is defined
     - f5app_services_package_path is not defined
 
-- import_tasks: install-remove.yaml
+- import_tasks: install.yaml
   when:
     - f5app_services_package_state == present
     - f5app_services_package_url is not defined
