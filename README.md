@@ -28,18 +28,13 @@ The ``absent`` value will remove the requested RPM package from the BIG-IP.
 
     f5app_services_package_path
 
-Path to the RPM package on the Ansible controller. This parameter is used when **installing** or
-**removing** RPM packages that are already downloaded. When **removing** package if the full path to the package 
+Path to the RPM package on the Ansible controller. This parameter is used when **downloading** a package or just
+**installing** RPM packages that are already downloaded. When **removing** package if the full path to the package 
 is provided, the filename will be cherry picked to properly remove the package.
 
     f5app_services_package_url
 
 The full url of the requested RPM package to be downloaded for installation on the BIG-IP.
-
-    f5app_services_package_destination
-
-The destination on the Ansible controller, where the requested RPM is downloaded. Parameter is mandatory when 
-downloading RPM package.
 
     f5app_services_package_checksum_url
 
@@ -76,7 +71,7 @@ The role can be used in couple of ways depending on the specified variables. The
             name: f5devcentral.f5app_services_package
           vars:
             f5app_services_package_url: "https://github.com/F5Networks/f5-appsvcs-extension/raw/master/dist/latest/f5-appsvcs-3.9.0-3.noarch.rpm"
-            f5app_services_package_destination: "/tmp/f5-appsvcs-3.9.0-3.noarch.rpm"
+            f5app_services_package_path: "/tmp/f5-appsvcs-3.9.0-3.noarch.rpm"
     
         - name: Download and Install DO RPM sha check - url
           include_role:
@@ -84,7 +79,7 @@ The role can be used in couple of ways depending on the specified variables. The
           vars:
             f5app_services_package_url: "https://github.com/F5Networks/f5-declarative-onboarding/raw/master/dist/f5-declarative-onboarding-1.3.0-4.noarch.rpm"
             f5app_services_package_checksum_url: "https://github.com/F5Networks/f5-declarative-onboarding/raw/master/dist/f5-declarative-onboarding-1.3.0-4.noarch.rpm.sha256"
-            f5app_services_package_destination: "/tmp/f5-declarative-onboarding-1.3.0-4.noarch.rpm"
+            f5app_services_package_path: "/tmp/f5-declarative-onboarding-1.3.0-4.noarch.rpm"
     
         - name: Download and Install TS RPM sha check - no_url
           include_role:
@@ -92,7 +87,7 @@ The role can be used in couple of ways depending on the specified variables. The
           vars:
             f5app_services_package_url: "https://github.com/F5Networks/f5-telemetry-streaming/raw/master/dist/f5-telemetry-1.1.0-1.noarch.rpm"
             f5app_services_package_destination: "/tmp/f5-telemetry-1.1.0-1.noarch.rpm"
-            f5app_services_package_checksum: "7fdad5ff409ca7068f75a19c38d1b06d3f4facb86afce15976af63b963c03e29"
+            f5app_services_package_path: "7fdad5ff409ca7068f75a19c38d1b06d3f4facb86afce15976af63b963c03e29"
 
 ## Install
 

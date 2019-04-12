@@ -1,8 +1,8 @@
 ---
 
-- name: Validate mandatory parameter present
+- name: Validate mandatory parameter f5app_services_package_path is present
   fail:
-    msg: "The f5app_services_package_destination parameter is not defined."
+    msg: "The f5app_services_package_path parameter is not defined."
   when:
     - f5app_services_package_destination is not defined
 
@@ -15,7 +15,7 @@
 - name: Download an RPM package to controller, no checksum validation
   get_url:
     url: "{{ f5app_services_package_url }}"
-    dest: "{{ f5app_services_package_destination }}"
+    dest: "{{ f5app_services_package_path }}"
     validate_certs: false
   when:
     - f5app_services_package_checksum_url is not defined and f5app_services_package_checksum is not defined
@@ -24,7 +24,7 @@
 - name: Download an RPM package to controller, checksum validation from url
   get_url:
     url: "{{ f5app_services_package_url }}"
-    dest: "{{ f5app_services_package_destination }}"
+    dest: "{{ f5app_services_package_path }}"
     checksum: "sha256:{{ f5app_services_package_checksum_url }}"
     validate_certs: false
   when:
@@ -34,7 +34,7 @@
 - name: Download an RPM package to controller, checksum validation from variable
   get_url:
     url: "{{ f5app_services_package_url }}"
-    dest: "{{ f5app_services_package_destination }}"
+    dest: "{{ f5app_services_package_path }}"
     checksum: "sha256:{{ f5app_services_package_checksum }}"
     validate_certs: false
   when:
@@ -43,16 +43,16 @@
 
 - name: Check the RPM file is downloaded and present
   stat:
-    path: "{{ f5app_services_package_destination }}"
+    path: "{{ f5app_services_package_path }}"
   register: rpmstatus
   until: rpmstatus.stat.exists
   retries: 10
   delay: 15
   delegate_to: localhost
 
-- name: Set the package file path fact if file is downloaded
-  set_fact:
-    f5app_services_package_path: "{{ f5app_services_package_destination }}"
-
-- import_tasks: install.yaml
-  when: f5app_services_package_path is defined
+- name: Install RPM Package After Download
+  bigip_lx_package:
+    package: "{{ f5app_services_package_path }}"
+    provider: "{{ provider }}"
+    state: "present"
+  delegate_to: localhost
