@@ -9,4 +9,4 @@
 - name: RPM is not installed raise error
   fail:
     msg: RPM tool needs to be installed on Ansible Controller to use this Role.
-    when: result.rc != 0
+  when: result.rc != 0

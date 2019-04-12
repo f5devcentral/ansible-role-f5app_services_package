@@ -73,14 +73,14 @@ The role can be used in couple of ways depending on the specified variables. The
       tasks:
         - name: Download and Install AS3 RPM no sha check
           include_role:
-            name: ansible-role-f5app_services_package
+            name: f5devcentral.f5app_services_package
           vars:
             f5app_services_package_url: "https://github.com/F5Networks/f5-appsvcs-extension/raw/master/dist/latest/f5-appsvcs-3.9.0-3.noarch.rpm"
             f5app_services_package_destination: "/tmp/f5-appsvcs-3.9.0-3.noarch.rpm"
     
         - name: Download and Install DO RPM sha check - url
           include_role:
-            name: ansible-role-f5app_services_package
+            name: f5devcentral.f5app_services_package
           vars:
             f5app_services_package_url: "https://github.com/F5Networks/f5-declarative-onboarding/raw/master/dist/f5-declarative-onboarding-1.3.0-4.noarch.rpm"
             f5app_services_package_checksum_url: "https://github.com/F5Networks/f5-declarative-onboarding/raw/master/dist/f5-declarative-onboarding-1.3.0-4.noarch.rpm.sha256"
@@ -88,7 +88,7 @@ The role can be used in couple of ways depending on the specified variables. The
     
         - name: Download and Install TS RPM sha check - no_url
           include_role:
-            name: ansible-role-f5app_services_package
+            name: f5devcentral.f5app_services_package
           vars:
             f5app_services_package_url: "https://github.com/F5Networks/f5-telemetry-streaming/raw/master/dist/f5-telemetry-1.1.0-1.noarch.rpm"
             f5app_services_package_destination: "/tmp/f5-telemetry-1.1.0-1.noarch.rpm"
@@ -103,19 +103,19 @@ The role can be used in couple of ways depending on the specified variables. The
       tasks:
         - name: Install AS3 RPM
           include_role:
-            name: ansible-role-f5app_services_package
+            name: f5devcentral.f5app_services_package
           vars:
             f5app_services_package_path: "/tmp/f5-appsvcs-3.9.0-3.noarch.rpm"
     
         - name: Install DO RPM
           include_role:
-            name: ansible-role-f5app_services_package
+            name: f5devcentral.f5app_services_package
           vars:
             f5app_services_package_path: "/tmp/f5-declarative-onboarding-1.3.0-4.noarch.rpm"
     
         - name: Install TS RPM
           include_role:
-            name: ansible-role-f5app_services_package
+            name: f5devcentral.f5app_services_package
           vars:
             f5app_services_package_path: "/tmp/f5-telemetry-1.1.0-1.noarch.rpm"
 
@@ -129,19 +129,19 @@ The role can be used in couple of ways depending on the specified variables. The
       tasks:
         - name: Remove AS3 RPM
           include_role:
-            name: ansible-role-f5app_services_package
+            name: f5devcentral.f5app_services_package
           vars:
             f5app_services_package_path: "/tmp/f5-appsvcs-3.9.0-3.noarch.rpm"
     
         - name: Remove DO RPM
           include_role:
-            name: ansible-role-f5app_services_package
+            name: f5devcentral.f5app_services_package
           vars:
             f5app_services_package_path: "/tmp/f5-declarative-onboarding-1.3.0-4.noarch.rpm"
     
         - name: Remove TS RPM
           include_role:
-            name: ansible-role-f5app_services_package
+            name: f5devcentral.f5app_services_package
           vars:
             f5app_services_package_path: "/tmp/f5-telemetry-1.1.0-1.noarch.rpm"
 

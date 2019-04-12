@@ -24,17 +24,17 @@
 
 - import_tasks: download.yaml
   when:
-    - f5app_services_package_state == present
+    - f5app_services_package_state == "present"
     - f5app_services_package_url is defined
     - f5app_services_package_path is not defined
 
 - import_tasks: install.yaml
   when:
-    - f5app_services_package_state == present
+    - f5app_services_package_state == "present"
     - f5app_services_package_url is not defined
     - f5app_services_package_path is defined
 
 - import_tasks: remove.yaml
   when:
-    - f5app_services_package_state == absent
+    - f5app_services_package_state == "absent"
     - f5app_services_package_path is defined
