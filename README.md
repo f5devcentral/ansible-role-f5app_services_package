@@ -11,15 +11,15 @@ None
 
 Available variables are listed below. For their default values, see `defaults/main.yml`:
 
-    f5app_services_package_server: localhost
-    f5app_services_package_server_port: 443
-    f5app_services_package_user: admin
-    f5app_services_package_password: secret
-    f5app_services_package_validate_certs: false
-    f5app_services_package_transport: rest
+    provider:
+      server: localhost
+      server_port: 443
+      user: admin
+      password: secret
+      validate_certs: false
+      transport: rest
 
-Establishes initial connection to the specified **BIG-IP** to install/remove RPM packages. These values are substituted into
-your ``provider`` module parameter.
+Establishes initial connection to the specified **BIG-IP** to install/remove RPM packages. This should be updated just as you would when using ``provider`` with a module directly.
 
     f5app_services_package_state: present
     
@@ -87,7 +87,7 @@ The role can be used in couple of ways depending on the specified variables. The
           vars:
             f5app_services_package_url: "https://github.com/F5Networks/f5-telemetry-streaming/raw/master/dist/f5-telemetry-1.1.0-1.noarch.rpm"
             f5app_services_package_destination: "/tmp/f5-telemetry-1.1.0-1.noarch.rpm"
-            f5app_services_package_path: "7fdad5ff409ca7068f75a19c38d1b06d3f4facb86afce15976af63b963c03e29"
+            f5app_services_package_checksum: "7fdad5ff409ca7068f75a19c38d1b06d3f4facb86afce15976af63b963c03e29"
 
 ## Install
 
