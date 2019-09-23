@@ -2,16 +2,6 @@
 
 - import_tasks: dependencies.yaml
 
-- name: Set Connection Facts
-  set_fact:
-    provider:
-      server: "{{ f5app_services_package_server }}"
-      server_port: "{{ f5app_services_package_server_port }}"
-      user: "{{ f5app_services_package_user }}"
-      password: "{{ f5app_services_package_password }}"
-      validate_certs: "{{ f5app_services_package_validate_certs }}"
-      transport: "{{ f5app_services_package_transport }}"
-
 - name: Wait for BIG-IP to be available
   bigip_wait:
     timeout: 300

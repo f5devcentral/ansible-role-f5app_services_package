@@ -1,11 +1,11 @@
 ---
 ### Connection parameters
 provider:
-  server: localhost
-  server_port: 443
-  user: admin
-  password: secret
-  validate_certs: false
-  transport: rest
+  server: "{{ f5app_services_package_server }}"
+  server_port: "{{ f5app_services_package_server_port }}"
+  user: "{{ f5app_services_package_user }}"
+  password: "{{ f5app_services_package_password }}"
+  validate_certs: "{{ f5app_services_package_validate_certs | default(no) }}"
+  transport: "{{ f5app_services_package_transport }}"
 
 f5app_services_package_state: present

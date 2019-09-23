@@ -5,20 +5,21 @@ F5 automation toolchain. It can also remove the said packages from the BIG-IP sy
 
 ## Requirements
 
-None
+- ‘rpm’ tool installed on the Ansible controller
 
 ## Role Variables
 
 Available variables are listed below. For their default values, see `defaults/main.yml`:
 
     provider:
-      server: localhost
-      server_port: 443
-      user: admin
-      password: secret
-      validate_certs: false
-      transport: rest
+      server: "{{ f5app_services_package_server }}"
+      server_port: "{{ f5app_services_package_server_port }}"
+      user: "{{ f5app_services_package_user }}"
+      password: "{{ f5app_services_package_password }}"
+      validate_certs: "{{ f5app_services_package_validate_certs | default(no) }}"
+      transport: "{{ f5app_services_package_transport }}"
 
+      
 Establishes initial connection to the specified **BIG-IP** to install/remove RPM packages. This should be updated just as you would when using ``provider`` with a module directly.
 
     f5app_services_package_state: present
